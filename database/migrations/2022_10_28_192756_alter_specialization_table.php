@@ -14,7 +14,10 @@ class AlterSpecializationTable extends Migration
     public function up()
     {
         Schema::table('specialization', function (Blueprint $table) {
-            $table->foreign('group_specialization_id')->references('id')->on('group_specialization');
+            $table->foreign('group_specialization_id')
+                ->references('id')->on('group_specialization')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
@@ -26,7 +29,7 @@ class AlterSpecializationTable extends Migration
     public function down()
     {
         Schema::table('specialization', function (Blueprint $table) {
-            //
+            $table->dropForeign('specialization_group_specialization_id_foreign');
         });
     }
 }

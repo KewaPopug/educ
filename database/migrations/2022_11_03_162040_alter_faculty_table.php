@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterHomeworkTable extends Migration
+class AlterFacultyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AlterHomeworkTable extends Migration
      */
     public function up()
     {
-        Schema::table('homework', function (Blueprint $table) {
-            $table->foreign('lesson_id')
-                ->references('lesson_id')->on('file');
+        Schema::table('faculty', function (Blueprint $table) {
+            
         });
     }
 
@@ -26,8 +25,8 @@ class AlterHomeworkTable extends Migration
      */
     public function down()
     {
-        Schema::table('homework', function (Blueprint $table) {
-            $table->dropForeign('homework_lesson_id_foreign');
+        Schema::table('faculty', function (Blueprint $table) {
+            //
         });
     }
 }
