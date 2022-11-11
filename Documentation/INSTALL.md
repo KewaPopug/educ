@@ -1,3 +1,17 @@
+### Установка проэкта
+
+Для начала вам нужно зарегистрироваться/авторизироваться на платформе
+[Github](https://github.com/).
+
+Далее перейдите по ссылке проекта [https://github.com/KewaPopug/educ/tree/master](https://github.com/KewaPopug/educ/tree/master).
+
+Затем нажать "Code", зайти в вкладку "Local", далее вкладка "HTTPS", скопируйте ссылку проэкта.
+
+Запустите терминал и введите команду:
+
+```bash
+git clone https://github.com/KewaPopug/educ.git -b master
+```
 ### Установка и настройка Apache
 #### Шаг 1 — Установка Apache
 Apache доступен в репозиториях программного обеспечения Ubuntu по умолчанию, его можно установить с помощью стандартных инструментов управления пакетами.
@@ -209,4 +223,3 @@ PUSHER_APP_CLUSTER=mt1
 MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
 MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
-
