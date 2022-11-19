@@ -1,17 +1,53 @@
-### Установка проэкта
+### Установка Composer
+
+Если Composer еще не установлен это можно сделать по инструкции на
+[getcomposer.org](https://getcomposer.org/download/), или одним из нижеперечисленных способов. На Linux
+используйте следующую команду:
+
+```bash
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+```
+
+В случае возникновения проблем читайте
+[раздел "Troubleshooting" в документации Composer](https://getcomposer.org/doc/articles/troubleshooting.md).
+Если вы только начинаете использовать Composer, рекомендуем прочитать как минимум
+[раздел "Basic usage"](https://getcomposer.org/doc/01-basic-usage.md).
+
+В данном руководстве предполагается, что Composer установлен [глобально](https://getcomposer.org/doc/00-intro.md#globally).
+То есть он доступен через команду `composer`. Если вы используете `composer.phar` из локальной директории,
+изменяйте команды соответственно.
+
+Если у вас уже установлен Composer, обновите его при помощи `composer self-update`.
+
+### Установка проекта
 
 Для начала вам нужно зарегистрироваться/авторизироваться на платформе
 [Github](https://github.com/).
 
 Далее перейдите по ссылке проекта [https://github.com/KewaPopug/educ/tree/master](https://github.com/KewaPopug/educ/tree/master).
 
-Затем нажать "Code", зайти в вкладку "Local", далее вкладка "HTTPS", скопируйте ссылку проэкта.
+Затем нажать "Code", зайти в вкладку "Local", далее вкладка "HTTPS", скопируйте ссылку проекта.
+
+Перейдите в директорию:
+
+```bash
+cd /var/www
+```
 
 Запустите терминал и введите команду:
 
 ```bash
 git clone https://github.com/KewaPopug/educ.git -b master
 ```
+
+Установите необходимые пакеты через команду:
+
+```bash
+composer install
+```
+
+
 ### Установка и настройка Apache
 #### Шаг 1 — Установка Apache
 Apache доступен в репозиториях программного обеспечения Ubuntu по умолчанию, его можно установить с помощью стандартных инструментов управления пакетами.
@@ -83,12 +119,6 @@ sudo systemctl start apache2
 
 #### Шаг 4 - настройка кофигруции Apache
 
-Создайте следующую директорию для educ:
-
-```bash
-sudo mkdir /var/www/educ
-```
-
 Создайте новый файл в /etc/apache2/sites-available/your_domain.conf:
 
 ```bash
@@ -144,15 +174,13 @@ sudo a2ensite educ.conf
 ### Установка Composer
 
 Если Composer еще не установлен это можно сделать по инструкции на
-[getcomposer.org](https://getcomposer.org/download/), или одним из нижеперечисленных способов. На Linux или Mac
+[getcomposer.org](https://getcomposer.org/download/), или одним из нижеперечисленных способов. На Linux
 используйте следующую команду:
 
 ```bash
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 ```
-
-На Windows, скачайте и запустите [Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe).
 
 В случае возникновения проблем читайте
 [раздел "Troubleshooting" в документации Composer](https://getcomposer.org/doc/articles/troubleshooting.md).
