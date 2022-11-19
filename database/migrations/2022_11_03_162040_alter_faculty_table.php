@@ -14,7 +14,7 @@ class AlterFacultyTable extends Migration
     public function up()
     {
         Schema::table('faculty', function (Blueprint $table) {
-            
+
         });
     }
 

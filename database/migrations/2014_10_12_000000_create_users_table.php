@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
+    //Добавить null ко всем полям ...->nullable(false)
     /**
      * Run the migrations.
      *
@@ -16,13 +17,13 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id()->autoIncrement()->unique();
             $table->enum('role', ['student', 'teacher', 'admin', 'superadmin']);
-            $table->string('secondname');
-            $table->string('firstname');
-            $table->string('middlename');
+            $table->string('secondname')->nullable(true);
+            $table->string('firstname')->nullable(true);
+            $table->string('middlename')->nullable(true);
             $table->string('email')->unique();
 //            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-//            $table->rememberToken();
+            $table->string('password')->nullable(true);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
