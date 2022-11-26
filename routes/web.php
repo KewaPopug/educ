@@ -15,21 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
-Route::view('/', 'welcome');
+  Route::view('/', 'welcome');
 
 
-Route::name('auth.')->group(function () {
+  Route::name('auth.')->group(function () {
 
-    Route::view('/main', 'main')->middleware('auth')->name('main');
+      Route::view('/main', 'main')->middleware('auth')->name('main');
 
-    Route::view('/login', 'login')->name('login');
+      Route::view('/login', 'login')->name('login');
 
-    Route::post('/login', [LoginController::class, 'login']);
+      Route::post('/login', [LoginController::class, 'login']);
 
-    Route::get('/logout', [LoginController::class, 'logout']);
+  Route::get('/logout', [LoginController::class, 'logout']);
 });
-
