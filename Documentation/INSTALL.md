@@ -170,29 +170,6 @@ sudo a2ensite educ.conf
 127.0.0.1   educ
 ```
 
-
-### Установка Composer
-
-Если Composer еще не установлен это можно сделать по инструкции на
-[getcomposer.org](https://getcomposer.org/download/), или одним из нижеперечисленных способов. На Linux
-используйте следующую команду:
-
-```bash
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
-```
-
-В случае возникновения проблем читайте
-[раздел "Troubleshooting" в документации Composer](https://getcomposer.org/doc/articles/troubleshooting.md).
-Если вы только начинаете использовать Composer, рекомендуем прочитать как минимум
-[раздел "Basic usage"](https://getcomposer.org/doc/01-basic-usage.md).
-
-В данном руководстве предполагается, что Composer установлен [глобально](https://getcomposer.org/doc/00-intro.md#globally).
-То есть он доступен через команду `composer`. Если вы используете `composer.phar` из локальной директории,
-изменяйте команды соответственно.
-
-Если у вас уже установлен Composer, обновите его при помощи `composer self-update`.
-
 ### Конфигурация Laravel
 
 Для исправного функционирования фреймворка нужно создать, а так же заполнить, файл переменной среды `.env`:
@@ -250,4 +227,45 @@ PUSHER_APP_CLUSTER=mt1
 
 MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
 MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+```
+
+### Laravel. Права доступа на папки и файлы
+
+Для обеспечения безопасной работы Laravel проекта, необходимо назначить корректные права доступа на файлы и папки.
+
+1. Переходим в директорию ```/var/www:```
+
+```command 
+cd /var/www
+```
+
+2. Назначаем группу и пользователя web сервера владельцем файлов:
+
+```command 
+sudo chown -R www-data:www-data /var/www/educ
+```
+Для того, чтобы ваш пользователь мог так-же работать со всеми файлами и папками, необходимо назначить группу и пользователя следующим образом:
+
+```command 
+sudo chown -R $USER:www-data /var/www/my_project
+```
+
+3. Назначаем права к каталогам и файлам:
+
+```command 
+sudo find  /var/www/educ -type f -exec chmod 644 {} \;  
+sudo find  /var/www/educ -type d -exec chmod 755 {} \;
+```
+
+4. Переход в директорию проэкта:
+
+```command 
+cd educ
+```
+
+5. Даем права на на запись в папку cache и storage:
+
+```command 
+sudo chgrp -R www-data storage bootstrap/cache
+sudo chmod -R ug+rwx storage bootstrap/cache
 ```
