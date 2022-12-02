@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,17 +15,39 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::name('main.')->group(function() {
+    Route::get('/', [HomeController::class, 'welcome']);
+//    Route::view('/', 'welcome');
+});
 
-  Route::view('/', 'welcome');
 
 
-  Route::name('auth.')->group(function () {
 
-      Route::view('/main', 'main')->middleware('auth')->name('main');
 
-      Route::view('/login', 'login')->name('login');
+Route::prefix('admin')->name('admin.')->group(function() {
+    Route::name('auth.')->group(function () {
 
-      Route::post('/login', [LoginController::class, 'login']);
+        Route::view('/main', 'admin/main')->middleware('auth')->name('main');
 
-  Route::get('/logout', [LoginController::class, 'logout']);
+        Route::view('/login', 'admin/auth/login')->name('login');
+
+        Route::post('/login', [AuthController::class, 'login']);
+
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    });
+});
+
+Route::name('site.')->group(function() {
+    Route::name('auth.')->group(function () {
+
+        Route::view('/main', 'main')->middleware('auth')->name('main');
+
+        Route::view('/login', 'login')->name('login');
+
+        Route::post('/login', [LoginController::class, 'login']);
+
+        Route::get('/logout', [LoginController::class, 'logout']);
+
+    });
 });
