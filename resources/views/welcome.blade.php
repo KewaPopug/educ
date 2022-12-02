@@ -81,14 +81,27 @@
     <div class="row justify-content-center">
         <div class="row mb-0">
             <div class="col-md-8 offset-md-4">
+                <div>
+                    <h1>Добро полжаловать в систему EDUC</h1>
+                </div>
 
-                <h1>Добро полжаловать в систему EDUC</h1>
-
-                <a class="dropdown-item" href="{{ route('auth.login') }}"
+                <div>
+                    <a class="dropdown-item" href="{{ route('admin.auth.login') }}"
                     {{ __('Login') }}
                     <button type="submit" class="btn btn-primary">
-                        {{ __('Войти') }}
+                        {{ __('Войти в админа') }}
                     </button>
+
+                </div>
+
+                <div>
+                    <a class="dropdown-item" href="{{ route('site.auth.login') }}"
+                        {{ __('Login') }}
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Войти в пользователя') }}
+                        </button>
+
+                </div>
             </div>
         </div>
     </div>
