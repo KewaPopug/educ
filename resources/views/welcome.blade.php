@@ -100,7 +100,7 @@
                         <button type="submit" class="btn btn-primary">
                             {{ __('Войти в пользователя') }}
                         </button>
-                    
+
                 </div>
             </div>
         </div>
