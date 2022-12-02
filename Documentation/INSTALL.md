@@ -247,7 +247,7 @@ sudo chown -R www-data:www-data /var/www/educ
 Для того, чтобы ваш пользователь мог так-же работать со всеми файлами и папками, необходимо назначить группу и пользователя следующим образом:
 
 ```command 
-sudo chown -R $USER:www-data /var/www/my_project
+sudo chown -R $USER:www-data /var/www/educ
 ```
 
 3. Назначаем права к каталогам и файлам:
