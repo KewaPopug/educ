@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::name('main.')->group(function() {
     Route::get('/', [HomeController::class, 'welcome']);
+		// TODO убери этот лишний комментарий //    Route::view('/', 'welcome');
+
 //    Route::view('/', 'welcome');
 });
 

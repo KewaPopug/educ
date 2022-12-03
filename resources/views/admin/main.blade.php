@@ -41,6 +41,12 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
+                    <?php
+                      /*
+                       * FIXME: - Зачем ты в этом представлении снова требуешь от пользователей авторизации? Убери этот блок. Тут надо просто сделать аналог представления /var/www/educ/resources/views/main.blade.php
+                       *        -  Оставь только ссылку на logout, чтобы пользователь смог разлогиниться
+                       */
+                    ?>
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
@@ -114,6 +120,7 @@
                                 @enderror
                             </div>
                         </div>
+						<?php // TODO убери лишние комментарии ?>
 
                         {{--                        <div class="row mb-3">--}}
                         {{--                            <div class="col-md-6 offset-md-4">--}}
@@ -132,7 +139,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
                                 {{--                                @if (Route::has('password.request'))--}}
                                 {{--                                    <a class="btn btn-link" href="{{ route('password.request') }}">--}}
                                 {{--                                        {{ __('Forgot Your Password?') }}--}}
