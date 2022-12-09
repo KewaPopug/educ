@@ -20,10 +20,6 @@ Route::name('main.')->group(function() {
 //    Route::view('/', 'welcome');
 });
 
-
-
-
-
 Route::prefix('admin')->name('admin.')->group(function() {
     Route::name('auth.')->group(function () {
 
@@ -47,7 +43,7 @@ Route::name('site.')->group(function() {
 
         Route::post('/login', [LoginController::class, 'login']);
 
-        Route::get('/logout', [LoginController::class, 'logout']);
+        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     });
 });
