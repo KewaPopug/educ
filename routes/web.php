@@ -23,13 +23,11 @@ Route::name('main.')->group(function() {
 Route::prefix('admin')->name('admin.')->group(function() {
 
     Route::name('administrators.')->group(function (){
-//        Route::view('/administrators', 'admin/administrators/index')->name('administrators');
         Route::get('/administrators', [\App\Http\Controllers\Admin\AdministratorsController::class, 'index'])->name('administrators');
     });
 
 
     Route::name('teachers.')->group(function (){
-//        Route::view('/teachers', 'admin/teachers/index')->name('teachers');
         Route::get('/teachers', [\App\Http\Controllers\Admin\TeachersController::class, 'index'])->name('teachers');
     });
 
