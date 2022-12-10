@@ -55,7 +55,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item" href="{{ route('admin.auth.logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -86,6 +86,13 @@
                 </div>
 
                 <div>
+                    <?php
+                      /*
+                       * FIXME:  - Не нужно входить в пользователей и администраторов. Им скорее всего будет больно без смазки.
+                       *        -Замени "Войти в админа" на "Войти в Панель администратора"
+                       *       -Замени "Войти в пользователя" на "Войти в Систему Educ"
+                       */
+                    ?>
                     <a class="dropdown-item" href="{{ route('admin.auth.login') }}"
                     {{ __('Login') }}
                     <button type="submit" class="btn btn-primary">

@@ -17,14 +17,26 @@ use Illuminate\Support\Facades\Route;
 */
 Route::name('main.')->group(function() {
     Route::get('/', [HomeController::class, 'welcome']);
-//    Route::view('/', 'welcome');
+		// TODO убери этот лишний комментарий //    Route::view('/', 'welcome');
 });
 
-
-
-
-
 Route::prefix('admin')->name('admin.')->group(function() {
+
+    Route::name('administrators.')->group(function (){
+//        Route::view('/administrators', 'admin/administrators/index')->name('administrators');
+        Route::get('/administrators', [\App\Http\Controllers\Admin\AdministratorsController::class, 'index'])->name('administrators');
+    });
+
+
+    Route::name('teachers.')->group(function (){
+//        Route::view('/teachers', 'admin/teachers/index')->name('teachers');
+        Route::get('/teachers', [\App\Http\Controllers\Admin\TeachersController::class, 'index'])->name('teachers');
+    });
+
+    Route::name('students.')->group(function (){
+        Route::get('/students', [\App\Http\Controllers\Admin\StudentsController::class, 'index'])->name('students');
+    });
+
     Route::name('auth.')->group(function () {
 
         Route::view('/main', 'admin/main')->middleware('auth')->name('main');
@@ -47,7 +59,7 @@ Route::name('site.')->group(function() {
 
         Route::post('/login', [LoginController::class, 'login']);
 
-        Route::get('/logout', [LoginController::class, 'logout']);
+        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     });
 });
