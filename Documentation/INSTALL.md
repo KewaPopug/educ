@@ -257,7 +257,7 @@ sudo find  /var/www/educ -type f -exec chmod 644 {} \;
 sudo find  /var/www/educ -type d -exec chmod 755 {} \;
 ```
 
-4. Переход в директорию проэкта:
+4. Переход в директорию проекта:
 
 ```command 
 cd educ
