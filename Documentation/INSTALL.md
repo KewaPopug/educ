@@ -257,13 +257,13 @@ sudo find  /var/www/educ -type f -exec chmod 644 {} \;
 sudo find  /var/www/educ -type d -exec chmod 755 {} \;
 ```
 
-4. Переход в директорию проекта:
+4. Переходим в директорию проекта:
 
 ```command 
 cd educ
 ```
 
-5. Даем права на на запись в папку cache и storage:
+5. Выдаем права на запись в папку cache и storage:
 
 ```command 
 sudo chgrp -R www-data storage bootstrap/cache
