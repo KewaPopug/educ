@@ -17,11 +17,5 @@
 <a href="{{ route('admin.teachers.teachers') }}"> Учителя </a>
 <a href="{{ route('admin.students.students') }}"> Студенты </a>
 
-
-{{--<a href="{{ url('/admin/administrators') }}"> Администраторы </a>--}}
-{{--<a href="{{ url('/admin/teachers') }}"> Учителя </a>--}}
-{{--<a href="{{ url('/admin/students') }}"> Студенты </a>--}}
-
-<h1>Здесть только аундифицированные админы</h1>
 </body>
 </html>
