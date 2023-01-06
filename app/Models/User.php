@@ -15,12 +15,29 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'role',
+        'secondname',
+        'firstname',
+        'middlename',
         'email',
         'password',
         'role'
@@ -48,7 +65,7 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($password)
     {
-        dd($this->attributes['password']);
+//        dd($this->attributes['password']);
         $this->attributes['password'] = Hash::make($password);
     }
 }
