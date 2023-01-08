@@ -22,7 +22,7 @@ class AdministratorsController extends Controller
     /**
      * Store a new flight in the database.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create(Request $request)
     {
@@ -36,16 +36,29 @@ class AdministratorsController extends Controller
             $administrator->email = $request->email;
             $administrator->password = Hash::make($request->password);
             $administrator->save();
+            $administrators = User::where('role', 'admin')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
+            return view('admin/administrators/index', [
+                'administrators' => $administrators,
+            ]);
         }
         return view('admin/administrators/create');
     }
 
     public function update(Request $request ,$id)
     {
-        $administrator = User::find($id);
+        $administrator = User::query()->find($id);
         if ($request->isMethod('post') && isset($_POST)) {
-
-            $administrator->save();
+            $administrator->role = 'admin';
+            $administrator->secondname = $request->secondname;
+            $administrator->firstname = $request->firstname;
+            $administrator->middlename = $request->middlename;
+            $administrator->email = $request->email;
+            if($administrator->update($request->all())){
+                $administrators = User::where('role', 'admin')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
+                return view('admin/administrators/index', [
+                    'administrators' => $administrators,
+                ]);
+            };
         }
         return view('admin/administrators/update', [
             'administrator' => $administrator,
@@ -54,7 +67,11 @@ class AdministratorsController extends Controller
 
     public function delete($id)
     {
-        $flight = User::find($id);
-        $flight->delete();
+        $administrators = User::where('role', 'admin')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
+        $administrator = User::find($id);
+        $administrator->delete();
+        return view('admin/administrators/index', [
+            'administrators' => $administrators,
+        ]);
     }
 }

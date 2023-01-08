@@ -1,4 +1,4 @@
-<h1>Администраторы</h1>
+<h1>Студенты</h1>
 <form method="POST" action="{{route("admin.administrators.create")}}">
     @csrf
     <label for="secondname">Фамилия</label><br />
@@ -10,8 +10,8 @@
     <label for="email">Email</label><br />
     <input name="email" id="email" type="text" placeholder="Email" value="{{(isset($administrator->email)) ? $administrator->email : ''}}"/><br />
     <label for="password">Пароль</label><br />
-{{--    {{(isset($administrator->email)) ? echo "<input name='password' id='password' type='password'' placeholder='password' value=''/><br />--}}
-{{--    " : ''}}--}}
+    <input name='password' id='password' type='password' placeholder='password' value=''/><br />
+
     <button>Отправить</button>
 </form>
 

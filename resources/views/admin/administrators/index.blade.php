@@ -27,7 +27,11 @@
                         @method('UPDATE')
                         <button type="submit" class="btn btn-danger">Update</button>
                     </form>
-                     <a href="@">Удалить</a> </td>
+                    <form action="{{route('admin.administrators.delete', $administrator->id)}}" method="get">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
             </tr>
             @empty
                 <p>No users</p>
