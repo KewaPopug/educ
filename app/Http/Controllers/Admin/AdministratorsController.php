@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AdministratorsController extends Controller
 {
@@ -22,25 +24,32 @@ class AdministratorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $administrators = new User();
-//        if (isset($_POST)){
-            dd($_POST);
-//            $administrators->name = $request->name;
-//
-//            $administrators->save();
-//        }
+        if ($request->isMethod('post') && isset($_POST)){
+            $administrator = new User;
+
+            $administrator->role = 'admin';
+            $administrator->secondname = $request->secondname;
+            $administrator->firstname = $request->firstname;
+            $administrator->middlename = $request->middlename;
+            $administrator->email = $request->email;
+            $administrator->password = Hash::make($request->password);
+            $administrator->save();
+        }
         return view('admin/administrators/create');
     }
 
-    public function update($id)
+    public function update(Request $request ,$id)
     {
         $administrator = User::find($id);
+        if ($request->isMethod('post') && isset($_POST)) {
 
-        $administrator->name = 'Paris to London';
-
-        $administrator->save();
+            $administrator->save();
+        }
+        return view('admin/administrators/update', [
+            'administrator' => $administrator,
+        ]);
     }
 
     public function delete($id)
