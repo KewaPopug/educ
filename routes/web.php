@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 Route::name('main.')->group(function() {
     Route::get('/', [HomeController::class, 'welcome']);
-		// TODO убери этот лишний комментарий //    Route::view('/', 'welcome');
 });
 
 Route::prefix('admin')->name('admin.')->group(function() {
@@ -29,6 +28,13 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     Route::name('teachers.')->group(function (){
         Route::get('/teachers', [\App\Http\Controllers\Admin\TeachersController::class, 'index'])->name('teachers');
+        Route::view('/teacher/form', 'admin/teachers/form')->name('form');
+        Route::get('/teachers/create', [\App\Http\Controllers\Admin\TeachersController::class, 'create'])->name('create');
+        Route::post('/teachers/create', [\App\Http\Controllers\Admin\TeachersController::class, 'create']);
+        Route::view('/teachers/form', 'admin/teachers/update');
+        Route::get('/teachers/update{user_id}', [\App\Http\Controllers\Admin\TeachersController::class, 'update'])->name('update');
+        Route::view('/teachers/form', 'admin/teachers/delete');
+        Route::get('/teachers/delete{user_id}', [\App\Http\Controllers\Admin\TeachersController::class, 'delete'])->name('delete');
     });
 
     Route::name('students.')->group(function (){
