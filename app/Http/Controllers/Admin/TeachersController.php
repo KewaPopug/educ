@@ -26,6 +26,7 @@ class TeachersController extends Controller
     public function create(Request $request)
     {
         if ($request->isMethod('post') && isset($_POST)){
+//            dd('asdasd');
             $teacher = new User;
             $teacher->role = 'teacher';
 
@@ -46,9 +47,20 @@ class TeachersController extends Controller
     public function update(Request $request ,$id)
     {
         $teacher = User::find($id);
-        if ($request->isMethod('post') && isset($_POST)) {
-
-            $teacher->save();
+        if (isset($_POST)) {
+            if ($request->isMethod('post') && isset($_POST)) {
+                $teacher->role = 'teacher';
+                $teacher->secondname = $request->secondname;
+                $teacher->firstname = $request->firstname;
+                $teacher->middlename = $request->middlename;
+                $teacher->email = $request->email;
+                if($teacher->update($request->all())){
+                    $teachers = User::where('role', 'teacher')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
+                    return view('admin/teachers/index', [
+                        'teachers' => $teachers,
+                    ]);
+                };
+            }
         }
         return view('admin/teachers/update', [
             'teacher' => $teacher,

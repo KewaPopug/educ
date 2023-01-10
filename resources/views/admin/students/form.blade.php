@@ -1,6 +1,6 @@
 <h1>Студенты</h1>
-<form method="POST" action="{{route("admin.students.create")}}">
-    @csrf
+<form method="post" action="{{(isset($student->id)) ? route("admin.students.update",['user_id' => $student->id] ) : route("admin.students.create")}}">
+@csrf
     <label for="secondname">Фамилия</label><br />
     <input name="secondname" id="secondname" type="text" placeholder="Фамилия" value="{{(isset($student->secondname)) ? $student->secondname : ''}}"/><br />
     <label for="firstname">Имя</label><br />
