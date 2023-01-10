@@ -70,8 +70,9 @@ class AdministratorsController extends Controller
         $administrators = User::where('role', 'admin')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
         $administrator = User::find($id);
         $administrator->delete();
-        return view('admin/administrators/index', [
-            'administrators' => $administrators,
-        ]);
+        return redirect()->route('admin.administrators.administrators');
+//        return view('admin/administrators/index', [
+//            'administrators' => $administrators,
+//        ]);
     }
 }
