@@ -45,7 +45,6 @@ class StudentsController extends Controller
     {
         $student = User::find($id);
         if ($request->isMethod('post') && isset($_POST)) {
-
             $student->save();
         }
         return view('admin/students/update', [
@@ -58,9 +57,7 @@ class StudentsController extends Controller
         $student = User::find($id);
         $student->delete();
         $students = User::where('role', 'student')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
-        return view('admin/students/index', [
-            'students' => $students,
-        ]);
+        return redirect()->route('admin.students.students');
 
     }
 }
