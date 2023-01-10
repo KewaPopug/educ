@@ -45,7 +45,17 @@ class StudentsController extends Controller
     {
         $student = User::find($id);
         if ($request->isMethod('post') && isset($_POST)) {
-            $student->save();
+            $student->role = 'student';
+            $student->secondname = $request->secondname;
+            $student->firstname = $request->firstname;
+            $student->middlename = $request->middlename;
+            $student->email = $request->email;
+            if($student->update($request->all())){
+                $students = User::where('role', 'admin')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
+                return view('admin/students/index', [
+                    'students' => $students,
+                ]);
+            };
         }
         return view('admin/students/update', [
             'student' => $student,
