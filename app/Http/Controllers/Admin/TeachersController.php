@@ -60,9 +60,6 @@ class TeachersController extends Controller
         $teacher = User::find($id);
         $teacher->delete();
         $teachers = User::where('role', 'teacher')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
-        return view('admin/teachers/index', [
-            'teachers' => $teachers,
-        ]);
-
+        return redirect()->route('admin.teachers.teachers');
     }
 }
