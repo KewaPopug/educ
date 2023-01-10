@@ -11,6 +11,8 @@ class StudentsController extends Controller
 {
     public function index()
     {
-        return view('admin/students/index');
+        return view('admin/students/index', [
+        ]);
     }
+
 }
