@@ -71,8 +71,5 @@ class AdministratorsController extends Controller
         $administrator = User::find($id);
         $administrator->delete();
         return redirect()->route('admin.administrators.administrators');
-//        return view('admin/administrators/index', [
-//            'administrators' => $administrators,
-//        ]);
     }
 }
