@@ -17,7 +17,7 @@ class AlterGroupTable extends Migration
             $table->foreign('specialization_id')->references('id')->on('specialization')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreign('group_id')->references('group_id')->on('student_group')
+            $table->foreign('id')->references('group_id')->on('student_group')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -31,7 +31,7 @@ class AlterGroupTable extends Migration
     public function down()
     {
         Schema::table('group', function (Blueprint $table) {
-            $table->dropForeign('group_group_id_foreign');
+            $table->dropForeign('group_id_foreign');
             $table->dropForeign('group_specialization_id_foreign');
         });
     }
