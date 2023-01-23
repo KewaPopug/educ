@@ -95,7 +95,7 @@
                     ?>
                     <a class="dropdown-item" href="{{ route('admin.auth.login') }}"
                     {{ __('Login') }}
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-black">
                         {{ __('Войти в админа') }}
                     </button>
 
@@ -104,7 +104,7 @@
                 <div>
                     <a class="dropdown-item" href="{{ route('site.auth.login') }}"
                         {{ __('Login') }}
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-black">
                             {{ __('Войти в пользователя') }}
                         </button>
 
