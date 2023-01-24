@@ -24,11 +24,19 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     Route::name('administrators.')->group(function (){
         Route::get('/administrators', [\App\Http\Controllers\Admin\AdministratorsController::class, 'index'])->name('administrators');
+        Route::view('/administrators/form', 'admin/administrators/form')->name('form');
+        Route::get('/administrators/create', [\App\Http\Controllers\Admin\AdministratorsController::class, 'create'])->name('create');
+        Route::post('/administrators/create', [\App\Http\Controllers\Admin\AdministratorsController::class, 'create']);
+        Route::view('/administrators/form', 'admin/administrators/update');
+        Route::get('/administrators/update{user_id}', [\App\Http\Controllers\Admin\AdministratorsController::class, 'update'])->name('update');
+//        Route::view('/administrators/form', 'admin/administrators/delete');
+        Route::get('/administrators/delete{user_id}', [\App\Http\Controllers\Admin\AdministratorsController::class, 'delete'])->name('delete');
+//        Route::post('/administrators/update', [\App\Http\Controllers\Admin\AdministratorsController::class, 'update']);
     });
-
 
     Route::name('teachers.')->group(function (){
         Route::get('/teachers', [\App\Http\Controllers\Admin\TeachersController::class, 'index'])->name('teachers');
+
     });
 
     Route::name('students.')->group(function (){
