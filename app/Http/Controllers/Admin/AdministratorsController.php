@@ -26,6 +26,7 @@ class AdministratorsController extends Controller
      */
     public function create(Request $request)
     {
+
         if ($request->isMethod('post') && isset($_POST)){
             $administrator = new User;
 

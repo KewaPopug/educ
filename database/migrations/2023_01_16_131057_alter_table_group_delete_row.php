@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterGroupTable extends Migration
+class AlterTableGroupDeleteRow extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,7 @@ class AlterGroupTable extends Migration
     public function up()
     {
         Schema::table('group', function (Blueprint $table) {
-            $table->foreign('specialization_id')->references('id')->on('specialization')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreign('id')->references('group_id')->on('student_group')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->dropColumn('group_id');
         });
     }
 
@@ -31,8 +26,7 @@ class AlterGroupTable extends Migration
     public function down()
     {
         Schema::table('group', function (Blueprint $table) {
-            $table->dropForeign('group_id_foreign');
-            $table->dropForeign('group_specialization_id_foreign');
+            $table->bigInteger('group_id');
         });
     }
 }

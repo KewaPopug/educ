@@ -1,5 +1,5 @@
 <h1>Учитель</h1>
-<form method="POST" action="{{route("admin.teachers.create")}}">
+<form method="POST" action="{{isset($teacher->id) ? route("admin.teachers.update",['user_id' => $teacher->id]) : route("admin.teachers.create")}}">
     @csrf
     <label for="secondname">Фамилия</label><br />
     <input name="secondname" id="secondname" type="text" placeholder="Фамилия" value="{{(isset($teacher->secondname)) ? $teacher->secondname : ''}}"/><br />

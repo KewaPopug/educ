@@ -1,5 +1,5 @@
-<h1>Студенты</h1>
-<form method="POST" action="{{route("admin.administrators.create")}}">
+<h1>Администраторы</h1>
+<form method="post" action="{{(isset($administrator->id)) ? route("admin.administrators.update",['user_id' => $administrator->id] ) : route("admin.administrators.create")}}">
     @csrf
     <label for="secondname">Фамилия</label><br />
     <input name="secondname" id="secondname" type="text" placeholder="Фамилия" value="{{(isset($administrator->secondname)) ? $administrator->secondname : ''}}"/><br />
@@ -14,5 +14,6 @@
 
     <button>Отправить</button>
 </form>
+
 
 

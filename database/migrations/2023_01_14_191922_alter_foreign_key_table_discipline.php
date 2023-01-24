@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterDisciplineTeacherTable extends Migration
+class AlterForeignKeyTableDiscipline extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class AlterDisciplineTeacherTable extends Migration
     public function up()
     {
         Schema::table('discipline_teacher', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->foreign('discipline_id')->references('id')->on('discipline')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
@@ -28,7 +28,7 @@ class AlterDisciplineTeacherTable extends Migration
     public function down()
     {
         Schema::table('discipline_teacher', function (Blueprint $table) {
-            $table->dropForeign('discipline_teacher_user_id_foreign');
+            $table->dropForeign('discipline_teacher_discipline_id_foreign');
         });
     }
 }

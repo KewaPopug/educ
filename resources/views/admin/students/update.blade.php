@@ -1,5 +1,4 @@
 <h1>Update</h1>
 <div class="content">
-    @include('admin.teachers.form')
+    @include('admin.students.form')
 </div>
-
