@@ -18,7 +18,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -114,7 +114,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         {{--                        <div class="row mb-3">--}}
                         {{--                            <div class="col-md-6 offset-md-4">--}}
                         {{--                                <div class="form-check">--}}
@@ -129,7 +128,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-black">
                                     {{ __('Login') }}
                                 </button>
 
@@ -147,6 +146,5 @@
     </div>
 </div>
 {{--@endsection--}}
-
 </body>
 </html>
