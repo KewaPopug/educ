@@ -27,8 +27,8 @@ class TeachersController extends Controller
     {
         if ($request->isMethod('post') && isset($_POST)){
             $teacher = new User;
+            $teacher->role = 'teacher';
 
-            $teacher->role = 'admin';
             $teacher->secondname = $request->secondname;
             $teacher->firstname = $request->firstname;
             $teacher->middlename = $request->middlename;
@@ -57,11 +57,8 @@ class TeachersController extends Controller
 
     public function delete($id)
     {
-        $teachers = User::where('role', 'teacher')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
         $teacher = User::find($id);
         $teacher->delete();
-        return view('admin/teachers/index', [
-            'teachers' => $teachers,
-        ]);
+        return redirect()->route('admin.teachers.teachers');
     }
 }
