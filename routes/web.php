@@ -53,8 +53,18 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::view('/students/form', 'admin/students/update');
         Route::get('/students/update/{user_id}', [\App\Http\Controllers\Admin\StudentsController::class, 'update'])->name('update');
         Route::post('/students/update/{user_id}', [\App\Http\Controllers\Admin\StudentsController::class, 'update'])->name('update');
-//        Route::view('/students/form', 'admin/students/delete');
         Route::get('/students/delete{user_id}', [\App\Http\Controllers\Admin\StudentsController::class, 'delete'])->name('delete');
+    });
+
+    Route::name('faculties.')->group(function (){
+        Route::get('/faculties', [\App\Http\Controllers\Admin\FacultyController::class, 'index'])->name('faculties');
+        Route::view('/faculties/form', 'admin/faculties/form')->name('form');
+        Route::get('/faculties/create', [\App\Http\Controllers\Admin\FacultyController::class, 'create'])->name('create');
+        Route::post('/faculties/create', [\App\Http\Controllers\Admin\FacultyController::class, 'create'])->name('create');
+        Route::view('/faculties/form', 'admin/faculties/update');
+        Route::get('/faculties/update/{user_id}', [\App\Http\Controllers\Admin\FacultyController::class, 'update'])->name('update');
+        Route::post('/faculties/update/{user_id}', [\App\Http\Controllers\Admin\FacultyController::class, 'update'])->name('update');
+        Route::get('/faculties/delete/{user_id}', [\App\Http\Controllers\Admin\FacultyController::class, 'delete'])->name('delete');
     });
 
     Route::name('auth.')->group(function () {
