@@ -56,9 +56,7 @@ class AdministratorsController extends Controller
             $administrator->email = $request->email;
             if($administrator->update($request->all())){
                 $administrators = User::where('role', 'admin')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
-                return view('admin/administrators/index', [
-                    'administrators' => $administrators,
-                ]);
+                return redirect('admin/administrators/index');
             };
         }
         return view('admin/administrators/update', [
