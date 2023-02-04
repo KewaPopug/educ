@@ -14,13 +14,13 @@ class CommentOnTableFaculty extends Migration
      */
     public function up()
     {
-        Schema::table('faculty', function (Blueprint $table) {
-            DB::statement("COMMENT ON TABLE faculty IS 'Таблица факультетов'");
-            DB::statement("COMMENT ON COLUMN public.faculty.id IS 'Индефикатор дисциплин'");
-            DB::statement("COMMENT ON COLUMN public.faculty.name_faculty IS 'Название факультета'");
-            DB::statement("COMMENT ON COLUMN public.faculty.faculty_reduction IS 'Сокращение факультета'");
-            DB::statement("COMMENT ON COLUMN public.faculty.created_at IS 'Дата и время создания записи'");
-            DB::statement("COMMENT ON COLUMN public.faculty.updated_at IS 'Дата и время обновления записи'");
+        Schema::table('faculties', function (Blueprint $table) {
+            DB::statement("COMMENT ON TABLE faculties IS 'Таблица факультетов'");
+            DB::statement("COMMENT ON COLUMN public.faculties.id IS 'Индефикатор дисциплин'");
+            DB::statement("COMMENT ON COLUMN public.faculties.name_faculty IS 'Название факультета'");
+            DB::statement("COMMENT ON COLUMN public.faculties.faculty_reduction IS 'Сокращение факультета'");
+            DB::statement("COMMENT ON COLUMN public.faculties.created_at IS 'Дата и время создания записи'");
+            DB::statement("COMMENT ON COLUMN public.faculties.updated_at IS 'Дата и время обновления записи'");
         });
     }
 
@@ -31,13 +31,13 @@ class CommentOnTableFaculty extends Migration
      */
     public function down()
     {
-        Schema::table('faculty', function (Blueprint $table) {
-            DB::statement("COMMENT ON TABLE faculty IS NULL");
-            DB::statement("COMMENT ON COLUMN public.faculty.id IS NULL");
-            DB::statement("COMMENT ON COLUMN public.faculty.name_faculty IS NULL");
-            DB::statement("COMMENT ON COLUMN public.faculty.faculty_reduction IS NULL");
-            DB::statement("COMMENT ON COLUMN public.faculty.created_at IS NULL");
-            DB::statement("COMMENT ON COLUMN public.faculty.updated_at IS NULL");
+        Schema::table('faculties', function (Blueprint $table) {
+            DB::statement("COMMENT ON TABLE faculties IS NULL");
+            DB::statement("COMMENT ON COLUMN public.faculties.id IS NULL");
+            DB::statement("COMMENT ON COLUMN public.faculties.name_faculty IS NULL");
+            DB::statement("COMMENT ON COLUMN public.faculties.faculty_reduction IS NULL");
+            DB::statement("COMMENT ON COLUMN public.faculties.created_at IS NULL");
+            DB::statement("COMMENT ON COLUMN public.faculties.updated_at IS NULL");
         });
     }
 }

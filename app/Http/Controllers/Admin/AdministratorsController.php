@@ -68,7 +68,6 @@ class AdministratorsController extends Controller
 
     public function delete($id)
     {
-        $administrators = User::where('role', 'admin')->orderBy('secondname')->orderBy('firstname')->orderBy('middlename')->get();
         $administrator = User::find($id);
         $administrator->delete();
         return redirect()->route('admin.administrators.administrators');

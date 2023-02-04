@@ -16,6 +16,7 @@
 <a href="{{ route('admin.administrators.administrators') }}"> Администраторы </a>
 <a href="{{ route('admin.teachers.teachers') }}"> Учителя </a>
 <a href="{{ route('admin.students.students') }}"> Студенты </a>
+<a href="{{ route('admin.faculties.faculties') }}"> Факультеты </a>
 
 </body>
 </html>
