@@ -67,6 +67,18 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/faculties/delete/{user_id}', [\App\Http\Controllers\Admin\FacultyController::class, 'delete'])->name('delete');
     });
 
+    Route::name('groups_specializations.')->group(function (){
+        Route::get('/groups_specializations', [\App\Http\Controllers\Admin\GroupSpecializationController::class, 'index'])->name('groups_specializations');
+        Route::post('/groups_specializations', [\App\Http\Controllers\Admin\GroupSpecializationController::class, 'index'])->name('groups_specializations');
+        Route::view('/groups_specializations/form', 'admin/groups_specializations/form')->name('form');
+        Route::get('/groups_specializations/create', [\App\Http\Controllers\Admin\GroupSpecializationController::class, 'create'])->name('create');
+        Route::post('/groups_specializations/create', [\App\Http\Controllers\Admin\GroupSpecializationController::class, 'create'])->name('create');
+        Route::view('/groups_specializations/form', 'admin/groups_specializations/update');
+        Route::get('/groups_specializations/update/{user_id}', [\App\Http\Controllers\Admin\GroupSpecializationController::class, 'update'])->name('update');
+        Route::post('/groups_specializations/update/{user_id}', [\App\Http\Controllers\Admin\GroupSpecializationController::class, 'update'])->name('update');
+        Route::get('/groups_specializations/delete/{user_id}', [\App\Http\Controllers\Admin\GroupSpecializationController::class, 'delete'])->name('delete');
+    });
+
     Route::name('auth.')->group(function () {
 
         Route::view('/main', 'admin/main')->middleware('auth')->name('main');
