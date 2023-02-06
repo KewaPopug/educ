@@ -18,7 +18,7 @@
                         @endforeach
                     </select>
             </div>
-        </div><div class="container">
+        </div>
         <div class="col-md-8 col-md-offset-2">
             <div class="form-group">
                 <label for="group_specialization_id">Группа Специальностей</label><br />
