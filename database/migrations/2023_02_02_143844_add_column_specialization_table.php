@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFacultyTable extends Migration
+class AddColumnSpecializationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateFacultyTable extends Migration
      */
     public function up()
     {
-        Schema::create('faculty', function (Blueprint $table) {
-            $table->id()->autoIncrement()->unique();
-            $table->string('name_faculty');
-            $table->string('faculty_reduction');
-            $table->timestamps();
+        Schema::table('specialization', function (Blueprint $table) {
+            $table->string('name_specialization');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateFacultyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faculty');
+        Schema::table('specialization', function (Blueprint $table) {
+            $table->dropColumn('name_specialization');
+        });
     }
 }

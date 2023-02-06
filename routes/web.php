@@ -79,6 +79,21 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/groups_specializations/delete/{user_id}', [\App\Http\Controllers\Admin\GroupSpecializationController::class, 'delete'])->name('delete');
     });
 
+    Route::name('specializations.')->group(function (){
+        Route::get('/specializations', [\App\Http\Controllers\Admin\SpecializationController::class, 'index'])->name('specializations');
+        Route::post('/specializations', [\App\Http\Controllers\Admin\SpecializationController::class, 'index'])->name('specializations');
+        Route::view('/specializations/form', 'admin/specializations/form')->name('form');
+        Route::get('/specializations/create', [\App\Http\Controllers\Admin\SpecializationController::class, 'create'])->name('create');
+        Route::post('/specializations/create', [\App\Http\Controllers\Admin\SpecializationController::class, 'create'])->name('create');
+        Route::view('/specializations/form', 'admin/specializations/update');
+        Route::get('/specializations/update/{user_id}', [\App\Http\Controllers\Admin\SpecializationController::class, 'update'])->name('update');
+        Route::post('/specializations/update/{user_id}', [\App\Http\Controllers\Admin\SpecializationController::class, 'update'])->name('update');
+        Route::get('/specializations/delete/{user_id}', [\App\Http\Controllers\Admin\SpecializationController::class, 'delete'])->name('delete');
+        Route::get('/specializations/create/add', [\App\Http\Controllers\Admin\SpecializationController::class, 'addGroupSpecialization'])->name('getGroupSpecialization');
+        Route::post('/specializations/create/add', [\App\Http\Controllers\Admin\SpecializationController::class, 'addGroupSpecialization'])->name('getGroupSpecialization');
+//        Route::post('/specializations/create', [\App\Http\Controllers\Admin\SpecializationController::class, 'addGroupSpecialization'])->name('addGroupSpecialization');
+    });
+
     Route::name('auth.')->group(function () {
 
         Route::view('/main', 'admin/main')->middleware('auth')->name('main');
