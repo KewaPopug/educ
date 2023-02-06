@@ -58,8 +58,7 @@ class GroupSpecializationController extends Controller
     {
         $faculties = GroupSpecialization::query()->find($id)->faculty->pluck('name_faculty','id');
         $groupsSpecializations = GroupSpecialization::query()->find($id);
-//        var_dump($groups_specializations);
-//        die();
+
 
         if ($request->isMethod('post') && isset($_POST)) {
 
