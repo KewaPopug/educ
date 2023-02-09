@@ -13,7 +13,7 @@ class AlterFacultyTable extends Migration
      */
     public function up()
     {
-        Schema::table('faculties', function (Blueprint $table) {
+        Schema::table('faculty', function (Blueprint $table) {
 
         });
     }
@@ -25,7 +25,7 @@ class AlterFacultyTable extends Migration
      */
     public function down()
     {
-        Schema::table('faculties', function (Blueprint $table) {
+        Schema::table('faculty', function (Blueprint $table) {
             //
         });
     }
