@@ -91,7 +91,18 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/specializations/delete/{user_id}', [\App\Http\Controllers\Admin\SpecializationController::class, 'delete'])->name('delete');
         Route::get('/specializations/create/add', [\App\Http\Controllers\Admin\SpecializationController::class, 'addGroupSpecialization'])->name('getGroupSpecialization');
         Route::post('/specializations/create/add', [\App\Http\Controllers\Admin\SpecializationController::class, 'addGroupSpecialization'])->name('getGroupSpecialization');
-//        Route::post('/specializations/create', [\App\Http\Controllers\Admin\SpecializationController::class, 'addGroupSpecialization'])->name('addGroupSpecialization');
+    });
+
+    Route::name('departments.')->group(function (){
+        Route::get('/departments', [\App\Http\Controllers\Admin\DepartmentController::class, 'index'])->name('departments');
+        Route::post('/departments', [\App\Http\Controllers\Admin\DepartmentController::class, 'index'])->name('departments');
+        Route::view('/departments/form', 'admin/departments/form')->name('form');
+        Route::get('/departments/create', [\App\Http\Controllers\Admin\DepartmentController::class, 'create'])->name('create');
+        Route::post('/departments/create', [\App\Http\Controllers\Admin\DepartmentController::class, 'create'])->name('create');
+        Route::view('/departments/form', 'admin/departments/update');
+        Route::get('/departments/update/{user_id}', [\App\Http\Controllers\Admin\DepartmentController::class, 'update'])->name('update');
+        Route::post('/departments/update/{user_id}', [\App\Http\Controllers\Admin\DepartmentController::class, 'update'])->name('update');
+        Route::get('/departments/delete/{user_id}', [\App\Http\Controllers\Admin\DepartmentController::class, 'delete'])->name('delete');
     });
 
     Route::name('auth.')->group(function () {

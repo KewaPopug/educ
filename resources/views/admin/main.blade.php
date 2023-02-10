@@ -19,6 +19,7 @@
 <a href="{{ route('admin.faculties.faculties') }}"> Факультеты </a>
 <a href="{{ route('admin.groups_specializations.groups_specializations') }}"> Группы специализаций </a>
 <a href="{{ route('admin.specializations.specializations') }}"> Cпециализаций </a>
+<a href="{{ route('admin.departments.departments') }}"> Департаменты </a>
 
 </body>
 </html>

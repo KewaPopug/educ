@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash;
 
-class Faculty extends Model
+class Department extends Model
 {
     use HasFactory;
 
@@ -15,7 +14,7 @@ class Faculty extends Model
      *
      * @var string
      */
-    protected $table = 'faculty';
+    protected $table = 'department';
 
     /**
      * The primary key associated with the table.
@@ -30,17 +29,18 @@ class Faculty extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name_faculty',
-        'faculty_reduction',
+        'faculty_id',
+        'name_department',
+        'short_name',
     ];
 
-    public function groupSpecialization()
+    public function faculty(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasMany(GroupSpecialization::class);
+        return $this->belongsTo('App\Models\Faculty');
     }
 
-    public function department()
+    public function department(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(GroupSpecialization::class);
+        return $this->hasMany(Specialization::class);
     }
 }
